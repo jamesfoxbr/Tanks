@@ -14,6 +14,8 @@ var angular_speed = PI
 
 var direction = 0
 
+var shot_time: float = 10
+var rate_of_fire: float = 15
 
 func _process(delta):
 	movement(delta)
@@ -22,11 +24,14 @@ func _process(delta):
 	speed_limits()
 	move_and_slide()
 	
-	if Input.is_action_pressed("shoot"):
+	if Input.is_action_pressed("shoot") and shot_time >= 1:
 		shoot(delta)
+		shot_time = 0
+	if shot_time < 1:
+		shot_time += rate_of_fire * delta
 
 
-func shoot(delta):
+func shoot(delta):	
 	var b = Bullet.instantiate()
 	owner.add_child(b)
 	
@@ -57,6 +62,7 @@ func movement(delta):
 	debug_panel(direction)
 
 
+# Make the tank react better when colliding against something.
 func collision():	
 	if move_and_slide():
 		speed *= 0.8
@@ -65,6 +71,7 @@ func collision():
 		angular_speed = PI
 
 
+# decelerate the tank speed not accelerating front or to rear
 func decelerate(delta):
 	if not Input.is_action_pressed("ui_up") and not Input.is_action_pressed("ui_down"):
 		if speed > 0:
@@ -75,6 +82,7 @@ func decelerate(delta):
 			speed = 0
 
 
+# make the tank handling looks more natural e take some time to recover after stop handling
 func handling_stabilization(delta):
 	var handling_stabilize = 2
 	if not Input.is_action_pressed("ui_left") and not Input.is_action_pressed("ui_right"):
@@ -86,6 +94,7 @@ func handling_stabilization(delta):
 			direction = 0
 
 
+# determines the maximum tank speed limit.
 func speed_limits():
 	if speed > max_speed:
 		speed = max_speed
