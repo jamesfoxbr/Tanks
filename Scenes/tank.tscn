@@ -32,8 +32,9 @@ position = Vector2(36.608, 0)
 shape = SubResource("RectangleShape2D_ify45")
 
 [node name="TankTopCamera" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 script = ExtResource("5_eu0xx")
+zoom_target = 0.5
 
 [node name="TankUI" type="CanvasLayer" parent="."]
 

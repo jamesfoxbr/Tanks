@@ -1,5 +1,5 @@
 res://Scenes/main.tscn
 res://Scenes/tank.tscn
 res://Scenes/bullet.tscn
+res://Scripts/TankTopCamera.gd
 res://Scripts/Tank.gd
-res://Scripts/bullet.gd

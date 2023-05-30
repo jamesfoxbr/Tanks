@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+var HP = 100
+
 @onready var Bullet = preload("res://Scenes/bullet.tscn")
 
 var speed = 0
@@ -67,9 +69,19 @@ func collision():
 	if move_and_slide():
 		speed *= 0.8
 		angular_speed = PI / 2
+		HP -= floor(abs(speed / 20))
+
 	if !move_and_slide():
 		angular_speed = PI
+	
+	tank_die()
 
+func tank_die():
+	if HP <= 0:
+		hide()
+		acceleration = 0
+		await get_tree().create_timer(3).timeout
+		get_tree().reload_current_scene()
 
 # decelerate the tank speed not accelerating front or to rear
 func decelerate(delta):
@@ -103,5 +115,6 @@ func speed_limits():
 func debug_panel(handling):
 	$TankUI/Speed.text = "Debug 
 	Speed: " + str(speed) + "
-	Direction: " + str(handling)
+	Direction: " + str(handling) + "
+	HP: " + str(HP)
 
