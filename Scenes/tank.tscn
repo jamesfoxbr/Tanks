@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c12kmqkvm8382"]
+[gd_scene load_steps=7 format=3 uid="uid://c12kmqkvm8382"]
 
 [ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_bpr08"]
 [ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="2_pshha"]
 [ext_resource type="Script" path="res://scripts/TurretSprite.gd" id="3_qdtmb"]
 [ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="3_r5e5p"]
+[ext_resource type="Script" path="res://Scripts/TankTopCamera.gd" id="5_eu0xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ify45"]
 size = Vector2(112, 160)
@@ -20,14 +21,17 @@ texture = ExtResource("2_pshha")
 
 [node name="TurretSprite" type="Sprite2D" parent="."]
 position = Vector2(0.44519, 9.2905)
-rotation = -1.57079
 scale = Vector2(4.08594, 4.08594)
 texture = ExtResource("3_r5e5p")
 offset = Vector2(10.026, -0.108978)
 script = ExtResource("3_qdtmb")
 
+[node name="Muzzle" type="Marker2D" parent="TurretSprite"]
+position = Vector2(36.608, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ify45")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+[node name="TankTopCamera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+script = ExtResource("5_eu0xx")

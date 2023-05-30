@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var Bullet = preload("res://Scenes/bullet.tscn")
+
 var speed = 0
 @export var max_speed = 40
 
@@ -19,7 +21,17 @@ func _process(delta):
 	collision()
 	move_and_slide()
 	
+	if Input.is_action_pressed("shoot"):
+		shoot(delta)
+	
 #	print(direction)
+
+func shoot(delta):
+	var b = Bullet.instantiate()
+	owner.add_child(b)
+	
+	b.transform = $TurretSprite/Muzzle.global_transform
+	b.position += transform.y * randf_range(-300,300) * delta
 
 func movement(delta):
 	var handling: float = 1.5

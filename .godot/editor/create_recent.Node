@@ -1,3 +1,8 @@
+VisibleOnScreenNotifier2D
+Marker2D
+Sprite2D
+CollisionShape2D
+Area2D
 Label
 Control
 VBoxContainer
@@ -6,6 +11,4 @@ RichTextLabel
 ColorRect
 Camera2D
 TileMap
-CollisionShape2D
-Sprite2D
 CharacterBody2D
