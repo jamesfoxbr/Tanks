@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c12kmqkvm8382"]
+
+[ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_bpr08"]
+[ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="2_pshha"]
+[ext_resource type="Script" path="res://scripts/TurretSprite.gd" id="3_qdtmb"]
+[ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="3_r5e5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ify45"]
+size = Vector2(112, 160)
+
+[node name="Tank" type="CharacterBody2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_bpr08")
+max_speed = 50
+acceleration = 20
+deceleration = 20
+max_handling = 2.0
+
+[node name="BodySprite" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(3.75, 3.75)
+texture = ExtResource("2_pshha")
+
+[node name="TurretSprite" type="Sprite2D" parent="."]
+position = Vector2(0.44519, 9.2905)
+rotation = -1.57079
+scale = Vector2(4.08594, 4.08594)
+texture = ExtResource("3_r5e5p")
+offset = Vector2(10.026, -0.108978)
+script = ExtResource("3_qdtmb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ify45")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
