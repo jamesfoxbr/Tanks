@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 var speed = 0
-@export var max_speed = 250
+@export var max_speed = 40
 
 var angular_speed = PI
 
-@export var acceleration = 100
-@export var deceleration = 100
+@export var acceleration = 30
+@export var deceleration = 20
 
 @export var max_handling: float = 1
 
@@ -17,6 +17,9 @@ func _process(delta):
 	speed_limits()
 	decelerate(delta)
 	collision()
+	move_and_slide()
+	
+#	print(direction)
 
 func movement(delta):
 	var handling: float = 1.5
@@ -26,7 +29,7 @@ func movement(delta):
 		direction += handling * delta
 	
 	direction = clamp(direction, -1 , 1)
-
+	
 	rotation += angular_speed * direction * delta
 	handling_stabilization(delta)
 	
@@ -38,10 +41,10 @@ func movement(delta):
 	velocity = Vector2.UP.rotated(rotation) * speed 
 	position += velocity * delta
 	
-func collision():
+func collision():	
 	if move_and_slide():
-		speed = 0
-		angular_speed = 0
+		speed *= 0.8
+		angular_speed = PI / 2
 	if !move_and_slide():
 		angular_speed = PI
 

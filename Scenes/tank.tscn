@@ -11,9 +11,6 @@ size = Vector2(112, 160)
 [node name="Tank" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_bpr08")
-max_speed = 50
-acceleration = 20
-deceleration = 20
 max_handling = 2.0
 
 [node name="BodySprite" type="Sprite2D" parent="."]
