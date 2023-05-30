@@ -15,3 +15,4 @@ func _on_Bullet_body_entered(body):
 		body.queue_free()
 	queue_free()
 	
+	

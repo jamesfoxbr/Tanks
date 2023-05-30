@@ -1,4 +1,7 @@
-res://Scenes/tank.tscn
-res://Scripts/TankTopCamera.gd
 res://Scenes/main.tscn
+res://Scripts/bullet.gd
+res://Scenes/tank.tscn
 res://Scenes/bullet.tscn
+res://Scripts/Tank.gd
+res://Scripts/TankTopCamera.gd
+res://Scripts/main.gd

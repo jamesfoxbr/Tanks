@@ -1,6 +1,6 @@
 extends Camera2D
 
-var zoom_increment: float = 2
+var zoom_increment: float = 1
 var zoom_current: float = 1 
 var zoom_target: float = 1
 
@@ -23,4 +23,6 @@ func _process(delta):
 	
 	set_zoom(Vector2(zoom_current, zoom_current))
 	
-	
+	var mouse_camera = Vector2(get_local_mouse_position())
+	position = mouse_camera / 4
+	print(mouse_camera)
