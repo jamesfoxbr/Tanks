@@ -1,8 +1,8 @@
+CollisionShape2D
+Sprite2D
+CharacterBody2D
 NavigationAgent2D
 Label
-Sprite2D
-CollisionShape2D
-CharacterBody2D
 Timer
 CanvasLayer
 VisibleOnScreenNotifier2D

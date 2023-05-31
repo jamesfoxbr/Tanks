@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8q3jcvspv67a"]
+[gd_scene load_steps=7 format=3 uid="uid://c8q3jcvspv67a"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_tank.gd" id="1_u6snj"]
 [ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="1_wm33w"]
 [ext_resource type="Script" path="res://Scripts/HPText.gd" id="3_375jr"]
+[ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="4_7mweb"]
+[ext_resource type="Script" path="res://Scripts/EnemyTurret.gd" id="5_kuu6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgo6r"]
 size = Vector2(30, 42)
 
 [node name="EnemyTank" type="CharacterBody2D" groups=["mobs"]]
+motion_mode = 1
+wall_min_slide_angle = 0.523599
 script = ExtResource("1_u6snj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,3 +29,12 @@ offset_bottom = -21.0
 pivot_offset = Vector2(23, 47)
 text = "HP"
 script = ExtResource("3_375jr")
+
+[node name="TurretSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.290196, 0.811765, 1)
+texture = ExtResource("4_7mweb")
+offset = Vector2(10.026, -0.108978)
+script = ExtResource("5_kuu6a")
+
+[node name="Muzzle" type="Marker2D" parent="TurretSprite"]
+position = Vector2(36.608, 0)

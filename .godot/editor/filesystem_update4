@@ -1,7 +1,10 @@
 res://Scenes/main.tscn
-res://Scenes/tank.tscn
-res://Scenes/bullet.tscn
 res://Scenes/enemy_tank.tscn
-res://Scripts/TankTopCamera.gd
-res://scripts/TurretSprite.gd
+res://Scenes/tank.tscn
+res://Scripts/enemy_tank.gd
+res://scripts/bullet.gd
+res://Scripts/EnemyTurret.gd
+res://scripts/enemy_tank.gd
+res://Scripts/Tank.gd
+res://scripts/Tank.gd
 res://Scripts/main.gd

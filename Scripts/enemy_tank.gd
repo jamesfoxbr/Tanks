@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
+
 var HP = 100
 
-@onready var Bullet = preload("res://Scenes/bullet.tscn")
+@onready var Bullet = preload("res://Scenes/enemybullet.tscn")
+
 @onready var HPText = $HPText
 
 var speed = 0
@@ -18,35 +20,39 @@ var angular_speed = PI
 var direction = 0
 
 var shot_time: float = 10
-var rate_of_fire: float = 15
+var rate_of_fire: float = 1		# how many shots per second
 
-func _process(delta):
+var player_coordinates: Vector2
+
+func _ready():
+	pass
+
+func _physics_process(delta):
 #	movement(delta)
 	decelerate(delta)
-	collision()
+#	collision()
 	speed_limits()
-#	move_and_slide()
+	move_and_slide()
+	tank_die()
 	
 	# Displays HP above the tank
 	HPText.text = str(HP)
 	HPText.rotation = -rotation
 	
-	
-	
-#	if Input.is_action_pressed("shoot") and shot_time >= 1:
-#		shoot(delta)
-#		shot_time = 0
-#	if shot_time < 1:
-#		shot_time += rate_of_fire * delta
+	# tank shoting on player
+	if shot_time >= 1:
+		shoot(delta)
+		shot_time = 0
+	if shot_time < 1:
+		shot_time += rate_of_fire * delta
 
 
-#func shoot(delta):	
-#	var b = Bullet.instantiate()
-#	owner.add_child(b)
-#
-#	b.transform = $TurretSprite/Muzzle.global_transform
-#	b.position += transform.y * randf_range(-300,300) * delta
+func shoot(delta):	
+	var b = Bullet.instantiate()
+	owner.add_child(b)
 
+	b.transform = $TurretSprite/Muzzle.global_transform
+	b.position += transform.y * randf_range(-300,300) * delta
 
 func movement(delta):
 	var handling: float = 2.5
@@ -67,8 +73,6 @@ func movement(delta):
 	
 	velocity = Vector2.UP.rotated(rotation) * speed 
 	position += velocity * delta
-	
-
 
 # Make the tank react better when colliding against something.
 func collision():	
@@ -79,8 +83,9 @@ func collision():
 
 	if !move_and_slide():
 		angular_speed = PI
-	
-	tank_die()
+
+func take_damage(d):
+	HP -= d
 
 func tank_die():
 	if HP <= 0:
@@ -96,7 +101,6 @@ func decelerate(delta):
 		if speed <= 0.9 and speed >= 0:
 			speed = 0
 
-
 # make the tank handling looks more natural e take some time to recover after stop handling
 func handling_stabilization(delta):
 	var handling_stabilize = 2
@@ -107,7 +111,6 @@ func handling_stabilization(delta):
 			direction += handling_stabilize * delta
 		if direction > -0.0099 and direction < 0.0099:
 			direction = 0
-
 
 # determines the maximum tank speed limit.
 func speed_limits():

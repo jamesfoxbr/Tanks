@@ -19,13 +19,21 @@ var direction = 0
 var shot_time: float = 10
 var rate_of_fire: float = 15
 
-func _process(delta):
+
+func _ready():
+	pass
+
+func _physics_process(delta):
 	movement(delta)
 	decelerate(delta)
-	collision()
 	speed_limits()
 	move_and_slide()
 	
+	slower_colliding()
+	tank_damage(delta)
+	tank_die()
+	
+	# shooting 
 	if Input.is_action_pressed("shoot") and shot_time >= 1:
 		shoot(delta)
 		shot_time = 0
@@ -40,6 +48,8 @@ func shoot(delta):
 	b.transform = $TurretSprite/Muzzle.global_transform
 	b.position += transform.y * randf_range(-300,300) * delta
 
+func take_damage(d):
+	HP -= d
 
 func movement(delta):
 	var handling: float = 2.5
@@ -58,28 +68,30 @@ func movement(delta):
 	if Input.is_action_pressed("ui_down"):
 		speed -= acceleration * delta
 	
-	velocity = Vector2.UP.rotated(rotation) * speed 
+	velocity = Vector2.UP.rotated(rotation) * speed
 	position += velocity * delta
 	
 	debug_panel(direction)
 
 
-# Make the tank react better when colliding against something.
-func collision():	
+func slower_colliding():
 	if move_and_slide():
-		speed *= 0.8
-		angular_speed = PI / 2
-		HP -= floor(abs(speed / 20))
+		speed *= 0.9 
 
-	if !move_and_slide():
-		angular_speed = PI
-	
-	tank_die()
+
+func tank_damage(delta):
+	if move_and_slide():
+		HP -= floor(abs(speed) * delta)
+
 
 func tank_die():
 	if HP <= 0:
-		hide()
-		acceleration = 0
+		set_physics_process(false)
+		set_process(false)
+		modulate = Color.BLACK
+		get_node("TurretSprite").set_physics_process(false)
+		get_node("TurretSprite").set_process(false)
+		
 		await get_tree().create_timer(3).timeout
 		get_tree().reload_current_scene()
 

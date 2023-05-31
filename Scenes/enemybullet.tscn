@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://d17gmsp34vmsl"]
+
+[ext_resource type="Script" path="res://Scripts/enemybullet.gd" id="1_424xn"]
+[ext_resource type="Texture2D" uid="uid://32hj4qplek8a" path="res://Sprites/tank_game_tileset.png" id="2_gtmpt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2mc4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooklw"]
+atlas = ExtResource("2_gtmpt")
+region = Rect2(32, 0, 16, 16)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_424xn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.42, 0.42)
+shape = SubResource("CircleShape2D_l2mc4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = SubResource("AtlasTexture_ooklw")
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
