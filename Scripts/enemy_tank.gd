@@ -1,9 +1,8 @@
 extends CharacterBody2D
-<<<<<<< Updated upstream
-=======
+
 #@export var player_tank: Node2D
 @onready var player_tank: Node2D = $"../Tank"
->>>>>>> Stashed changes
+
 
 var HP = 100
 
@@ -23,17 +22,16 @@ var angular_speed = PI
 var direction = 0
 
 var shot_time: float = 10
-var rate_of_fire: float = 15
+var rate_of_fire: float = 1
 
-<<<<<<< Updated upstream
-func _process(delta):
-=======
+
 
 func _ready():
 	pass
 
 func _physics_process(delta):
->>>>>>> Stashed changes
+#	print(player_tank.position)
+	
 #	movement(delta)
 	decelerate(delta)
 	collision()
@@ -46,19 +44,20 @@ func _physics_process(delta):
 	
 	
 	
-#	if Input.is_action_pressed("shoot") and shot_time >= 1:
-#		shoot(delta)
-#		shot_time = 0
-#	if shot_time < 1:
-#		shot_time += rate_of_fire * delta
+	# tank shoting on player
+	if shot_time >= 1:
+		shoot(delta)
+		shot_time = 0
+	if shot_time < 1:
+		shot_time += rate_of_fire * delta
 
 
-#func shoot(delta):	
-#	var b = Bullet.instantiate()
-#	owner.add_child(b)
-#
-#	b.transform = $TurretSprite/Muzzle.global_transform
-#	b.position += transform.y * randf_range(-300,300) * delta
+func shoot(delta):	
+	var b = Bullet.instantiate()
+	owner.add_child(b)
+
+	b.transform = $TurretSprite/Muzzle.global_transform
+	b.position += transform.y * randf_range(-300,300) * delta
 
 
 func movement(delta):
@@ -81,7 +80,6 @@ func movement(delta):
 	velocity = Vector2.UP.rotated(rotation) * speed 
 	position += velocity * delta
 	
-
 
 # Make the tank react better when colliding against something.
 func collision():	
@@ -133,3 +131,5 @@ func speed_limits():
 	if speed > max_speed:
 		speed = max_speed
 
+func take_damage(d):
+	HP -= d

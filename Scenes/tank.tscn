@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ify45"]
 size = Vector2(112, 160)
 
-[node name="Tank" type="CharacterBody2D"]
+[node name="Tank" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_bpr08")
 

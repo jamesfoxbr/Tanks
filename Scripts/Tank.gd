@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal player_position
+
 
 var HP = 100
 
@@ -27,19 +27,13 @@ func _process(delta):
 	speed_limits()
 	move_and_slide()
 	
-<<<<<<< Updated upstream
-=======
-	slower_colliding()
-	tank_damage(delta)
+#	slower_colliding()
+#	tank_damage(delta)
 	tank_die()
 	shooting(delta) 
 	
-	player_position.emit(position)
-	
-	
 
 func shooting(delta):
->>>>>>> Stashed changes
 	if Input.is_action_pressed("shoot") and shot_time >= 1:
 		shoot(delta)
 		shot_time = 0
@@ -118,6 +112,8 @@ func handling_stabilization(delta):
 		if direction > -0.0099 and direction < 0.0099:
 			direction = 0
 
+func take_damage(d):
+	HP -= d
 
 # determines the maximum tank speed limit.
 func speed_limits():
