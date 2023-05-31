@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn308avku4bti"]
+[gd_scene load_steps=7 format=3 uid="uid://dn308avku4bti"]
 
 [ext_resource type="PackedScene" uid="uid://c12kmqkvm8382" path="res://Scenes/tank.tscn" id="1_j682i"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_rxesk"]
 [ext_resource type="Texture2D" uid="uid://32hj4qplek8a" path="res://Sprites/tank_game_tileset.png" id="2_s5k17"]
+[ext_resource type="PackedScene" uid="uid://c8q3jcvspv67a" path="res://Scenes/enemy_tank.tscn" id="4_qg2ew"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhmgq"]
 texture = ExtResource("2_s5k17")
@@ -79,3 +80,6 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0
 
 [node name="Tank" parent="." instance=ExtResource("1_j682i")]
 position = Vector2(630, 558)
+
+[node name="EnemyTank" parent="." instance=ExtResource("4_qg2ew")]
+position = Vector2(629, 427)

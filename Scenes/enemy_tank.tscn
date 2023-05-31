@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8q3jcvspv67a"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_tank.gd" id="1_u6snj"]
+[ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="1_wm33w"]
+[ext_resource type="Script" path="res://Scripts/HPText.gd" id="3_375jr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgo6r"]
+size = Vector2(30, 42)
+
+[node name="EnemyTank" type="CharacterBody2D" groups=["mobs"]]
+script = ExtResource("1_u6snj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tgo6r")
+
+[node name="EnemyTankSprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0.337255, 1, 1)
+texture = ExtResource("1_wm33w")
+
+[node name="HPText" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -47.0
+offset_right = 25.0
+offset_bottom = -21.0
+pivot_offset = Vector2(23, 47)
+text = "HP"
+script = ExtResource("3_375jr")
