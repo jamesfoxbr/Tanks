@@ -1,4 +1,9 @@
 extends CharacterBody2D
+<<<<<<< Updated upstream
+=======
+#@export var player_tank: Node2D
+@onready var player_tank: Node2D = $"../Tank"
+>>>>>>> Stashed changes
 
 var HP = 100
 
@@ -20,7 +25,15 @@ var direction = 0
 var shot_time: float = 10
 var rate_of_fire: float = 15
 
+<<<<<<< Updated upstream
 func _process(delta):
+=======
+
+func _ready():
+	pass
+
+func _physics_process(delta):
+>>>>>>> Stashed changes
 #	movement(delta)
 	decelerate(delta)
 	collision()
@@ -84,6 +97,12 @@ func collision():
 
 func tank_die():
 	if HP <= 0:
+		set_physics_process(false)
+		set_process(false)
+		modulate = Color.BLACK
+		get_node("TurretSprite").set_physics_process(false)
+		get_node("TurretSprite").set_process(false)
+		await get_tree().create_timer(3).timeout
 		queue_free()
 
 # decelerate the tank speed not accelerating front or to rear

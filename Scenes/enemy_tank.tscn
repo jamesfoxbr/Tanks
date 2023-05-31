@@ -25,3 +25,16 @@ offset_bottom = -21.0
 pivot_offset = Vector2(23, 47)
 text = "HP"
 script = ExtResource("3_375jr")
+<<<<<<< Updated upstream
+=======
+
+[node name="TurretSprite" type="Sprite2D" parent="." node_paths=PackedStringArray("player_tank")]
+modulate = Color(1, 0.290196, 0.811765, 1)
+texture = ExtResource("4_7mweb")
+offset = Vector2(10.026, -0.108978)
+script = ExtResource("5_kuu6a")
+player_tank = NodePath("..")
+
+[node name="Muzzle" type="Marker2D" parent="TurretSprite"]
+position = Vector2(36.608, 0)
+>>>>>>> Stashed changes

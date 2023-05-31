@@ -1,4 +1,5 @@
 2a60927148abd1d33b818b535e306557
+<<<<<<< Updated upstream
 ::res://::1685491504
 export_presets.cfg::TextFile::-1::1685478225::0::1::::<><>::
 icon.svg::CompressedTexture2D::1528076797749758681::1685373926::1685373933::1::::<><>::
@@ -15,6 +16,27 @@ main.gd::GDScript::-1::1685468550::0::1::::<>Node2D<>::
 Tank.gd::GDScript::-1::1685476784::0::1::::<>CharacterBody2D<>::
 TankTopCamera.gd::GDScript::-1::1685473119::0::1::::<>Camera2D<>::
 TurretSprite.gd::GDScript::-1::1685468632::0::1::::<>Sprite2D<>::
+=======
+::res://::1685567719
+export_presets.cfg::TextFile::-1::1685478225::0::1::::<><>::
+icon.svg::CompressedTexture2D::1528076797749758681::1685373926::1685373933::1::::<><>::
+::res://Scenes/::1685565676
+bullet.tscn::PackedScene::7364092144051903944::1685560935::0::1::::<><>::res://Scripts/bullet.gd<>uid://32hj4qplek8a
+enemybullet.tscn::PackedScene::9050618775185669847::1685560935::0::1::::<><>::res://Scripts/enemybullet.gd<>uid://32hj4qplek8a
+enemy_tank.tscn::PackedScene::7123819537775170260::1685565676::0::1::::<><>::res://Scripts/enemy_tank.gd<>uid://ch3mnrpcui6t5<>res://Scripts/HPText.gd<>uid://bwj0c7ukey10x<>res://Scripts/EnemyTurret.gd
+main.tscn::PackedScene::8131096484428536378::1685565676::0::1::::<><>::uid://c12kmqkvm8382<>res://Scripts/main.gd<>uid://32hj4qplek8a<>uid://c8q3jcvspv67a
+tank.tscn::PackedScene::6654118957582338389::1685565676::0::1::::<><>::res://Scripts/Tank.gd<>uid://ch3mnrpcui6t5<>res://scripts/TurretSprite.gd<>uid://bwj0c7ukey10x<>res://Scripts/TankTopCamera.gd
+::res://Scripts/::1685565519
+bullet.gd::GDScript::-1::1685564590::0::1::::<>Area2D<>::
+enemybullet.gd::GDScript::-1::1685557286::0::1::::<>Area2D<>::
+EnemyTurret.gd::GDScript::-1::1685565500::0::1::::<>Sprite2D<>::
+enemy_tank.gd::GDScript::-1::1685565500::0::1::::<>CharacterBody2D<>::
+HPText.gd::GDScript::-1::1685486461::0::1::::<>Label<>::
+main.gd::GDScript::-1::1685565500::0::1::::<>Node2D<>::
+Tank.gd::GDScript::-1::1685565519::0::1::::<>CharacterBody2D<>::
+TankTopCamera.gd::GDScript::-1::1685491699::0::1::::<>Camera2D<>::
+TurretSprite.gd::GDScript::-1::1685549797::0::1::::<>Sprite2D<>::
+>>>>>>> Stashed changes
 ::res://Sprites/::1685472811
 tank.png::CompressedTexture2D::5322718585387030944::1685389649::1685389651::1::::<><>::
 tank_game_tileset.png::CompressedTexture2D::2021468460909455802::1685472793::1685472811::1::::<><>::

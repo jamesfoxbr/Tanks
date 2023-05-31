@@ -26,7 +26,7 @@ offset = Vector2(10.026, -0.108978)
 script = ExtResource("3_qdtmb")
 
 [node name="Muzzle" type="Marker2D" parent="TurretSprite"]
-position = Vector2(36.608, 0)
+position = Vector2(30.239, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ify45")

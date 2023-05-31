@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal player_position
 
 var HP = 100
 
@@ -26,12 +27,24 @@ func _process(delta):
 	speed_limits()
 	move_and_slide()
 	
+<<<<<<< Updated upstream
+=======
+	slower_colliding()
+	tank_damage(delta)
+	tank_die()
+	shooting(delta) 
+	
+	player_position.emit(position)
+	
+	
+
+func shooting(delta):
+>>>>>>> Stashed changes
 	if Input.is_action_pressed("shoot") and shot_time >= 1:
 		shoot(delta)
 		shot_time = 0
 	if shot_time < 1:
 		shot_time += rate_of_fire * delta
-
 
 func shoot(delta):	
 	var b = Bullet.instantiate()
