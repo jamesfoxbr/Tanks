@@ -1,6 +1,11 @@
-VisibleOnScreenEnabler2D
+GPUParticles2D
 Sprite2D
 CollisionShape2D
+StaticBody2D
+RayCast2D
+Area2D
+Marker2D
+VisibleOnScreenEnabler2D
 RigidBody2D
 NavigationAgent2D
 Label
@@ -8,8 +13,6 @@ CharacterBody2D
 Timer
 CanvasLayer
 VisibleOnScreenNotifier2D
-Marker2D
-Area2D
 Control
 VBoxContainer
 RichTextLabel

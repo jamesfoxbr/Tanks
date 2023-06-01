@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8q3jcvspv67a"]
+[gd_scene load_steps=9 format=3 uid="uid://c8q3jcvspv67a"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_tank.gd" id="1_u6snj"]
 [ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="1_wm33w"]
@@ -7,6 +7,29 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgo6r"]
 size = Vector2(30, 42)
+
+[sub_resource type="Gradient" id="Gradient_4qeo7"]
+colors = PackedColorArray(0.990377, 0.689192, 0.269895, 1, 0.980392, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_moeuk"]
+gradient = SubResource("Gradient_4qeo7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1x3eg"]
+emission_shape = 3
+emission_box_extents = Vector3(8, 8, 1)
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 3.0
+scale_min = 12.0
+scale_max = 12.0
+color_ramp = SubResource("GradientTexture1D_moeuk")
 
 [node name="EnemyTank" type="CharacterBody2D" groups=["mobs"]]
 motion_mode = 1
@@ -38,3 +61,9 @@ script = ExtResource("5_kuu6a")
 position = Vector2(36.608, 0)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_1x3eg")
+lifetime = 0.4
+randomness = 0.03

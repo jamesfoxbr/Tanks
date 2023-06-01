@@ -42,7 +42,7 @@ func shoot(delta):
 	owner.add_child(b)
 	
 	b.transform = $TurretSprite/Muzzle.global_transform
-	b.position += transform.y * randf_range(-300,300) * delta
+	b.position += transform.y * delta
 
 
 func movement(delta):
