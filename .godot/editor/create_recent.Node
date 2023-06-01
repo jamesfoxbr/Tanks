@@ -1,7 +1,9 @@
-NavigationAgent2D
-Label
+VisibleOnScreenEnabler2D
 Sprite2D
 CollisionShape2D
+RigidBody2D
+NavigationAgent2D
+Label
 CharacterBody2D
 Timer
 CanvasLayer

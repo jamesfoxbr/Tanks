@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 var HP = 100
 
 @onready var Bullet = preload("res://Scenes/bullet.tscn")
@@ -27,8 +26,6 @@ func _process(delta):
 	speed_limits()
 	move_and_slide()
 	
-#	slower_colliding()
-#	tank_damage(delta)
 	tank_die()
 	shooting(delta) 
 	

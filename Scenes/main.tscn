@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dn308avku4bti"]
 
-[ext_resource type="PackedScene" uid="uid://c12kmqkvm8382" path="res://Scenes/tank.tscn" id="1_j682i"]
+[ext_resource type="PackedScene" uid="uid://3r0l4lw4tkfq" path="res://Scenes/tank.tscn" id="1_j682i"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_rxesk"]
 [ext_resource type="Texture2D" uid="uid://32hj4qplek8a" path="res://Sprites/tank_game_tileset.png" id="2_s5k17"]
 [ext_resource type="PackedScene" uid="uid://c8q3jcvspv67a" path="res://Scenes/enemy_tank.tscn" id="4_206f8"]
@@ -82,67 +82,4 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0
 position = Vector2(630, 558)
 
 [node name="EnemyTank" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(868, 619)
-
-[node name="EnemyTank19" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(524, 555)
-
-[node name="EnemyTank20" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(49, 609)
-
-[node name="EnemyTank2" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(263, 482)
-
-[node name="EnemyTank3" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(416, 290)
-
-[node name="EnemyTank4" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(274, 306)
-
-[node name="EnemyTank5" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(186, 605)
-
-[node name="EnemyTank6" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(-50, 605)
-
-[node name="EnemyTank7" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(-40, 379)
-
-[node name="EnemyTank21" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(372, -42)
-
-[node name="EnemyTank22" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1360, 709)
-
-[node name="EnemyTank8" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1210, 601)
-
-[node name="EnemyTank9" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1206, 437)
-
-[node name="EnemyTank10" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1351, 437)
-
-[node name="EnemyTank11" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1432, 610)
-
-[node name="EnemyTank12" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1220, 216)
-
-[node name="EnemyTank13" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(1207, 124)
-
-[node name="EnemyTank14" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(981, 705)
-
-[node name="EnemyTank15" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(899, 706)
-
-[node name="EnemyTank16" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(437, 729)
-
-[node name="EnemyTank17" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(266, 732)
-
-[node name="EnemyTank18" parent="." instance=ExtResource("4_206f8")]
-position = Vector2(83, 728)
+position = Vector2(865, 417)

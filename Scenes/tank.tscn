@@ -1,10 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://c12kmqkvm8382"]
+[gd_scene load_steps=7 format=3 uid="uid://3r0l4lw4tkfq"]
 
 [ext_resource type="Script" path="res://Scripts/Tank.gd" id="1_bpr08"]
 [ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="2_pshha"]
-[ext_resource type="Script" path="res://scripts/TurretSprite.gd" id="3_qdtmb"]
 [ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="3_r5e5p"]
 [ext_resource type="Script" path="res://Scripts/TankTopCamera.gd" id="5_eu0xx"]
+
+[sub_resource type="GDScript" id="GDScript_50y6w"]
+script/source = "extends Sprite2D
+@export var turret_speed = 3
+
+func _ready():
+	pass
+
+func _physics_process(delta):
+	var m = get_global_mouse_position()
+	var aim_speed = deg_to_rad(turret_speed)			# controls the turret rotation/aim speed
+	if get_angle_to(m) > 0:
+		rotation += aim_speed
+	else:
+		rotation -= aim_speed
+
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ify45"]
 size = Vector2(112, 160)
@@ -23,7 +39,7 @@ position = Vector2(0.44519, 9.2905)
 scale = Vector2(4.08594, 4.08594)
 texture = ExtResource("3_r5e5p")
 offset = Vector2(10.026, -0.108978)
-script = ExtResource("3_qdtmb")
+script = SubResource("GDScript_50y6w")
 
 [node name="Muzzle" type="Marker2D" parent="TurretSprite"]
 position = Vector2(30.239, 0)

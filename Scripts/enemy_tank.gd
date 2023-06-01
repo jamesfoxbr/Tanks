@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-#@export var player_tank: Node2D
 @onready var player_tank: Node2D = $"../Tank"
-
 
 var HP = 100
 
@@ -25,24 +23,20 @@ var shot_time: float = 10
 var rate_of_fire: float = 1
 
 
-
 func _ready():
 	pass
 
 func _physics_process(delta):
-#	print(player_tank.position)
 	
 #	movement(delta)
 	decelerate(delta)
 	collision()
 	speed_limits()
-#	move_and_slide()
+	move_and_slide()
 	
 	# Displays HP above the tank
 	HPText.text = str(HP)
 	HPText.rotation = -rotation
-	
-	
 	
 	# tank shoting on player
 	if shot_time >= 1:
