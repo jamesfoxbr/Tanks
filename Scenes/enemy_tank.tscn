@@ -1,17 +1,17 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8q3jcvspv67a"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_tank.gd" id="1_u6snj"]
-[ext_resource type="Texture2D" uid="uid://ch3mnrpcui6t5" path="res://Sprites/tank.png" id="1_wm33w"]
+[ext_resource type="Texture2D" uid="uid://8mkhjxt66kim" path="res://Sprites/tankEn.png" id="2_leokp"]
 [ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="4_7mweb"]
 [ext_resource type="Script" path="res://Scripts/EnemyTurret.gd" id="5_kuu6a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgo6r"]
-size = Vector2(30, 42)
+[sub_resource type="CircleShape2D" id="CircleShape2D_ombhn"]
+radius = 15.0
 
 [sub_resource type="Gradient" id="Gradient_4qeo7"]
 colors = PackedColorArray(0.990377, 0.689192, 0.269895, 1, 0.980392, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_moeuk"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x3rc6"]
 gradient = SubResource("Gradient_4qeo7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1x3eg"]
@@ -29,27 +29,20 @@ orbit_velocity_max = 0.0
 radial_accel_max = 3.0
 scale_min = 12.0
 scale_max = 12.0
-color_ramp = SubResource("GradientTexture1D_moeuk")
+color_ramp = SubResource("GradientTexture1D_x3rc6")
 
-[node name="EnemyTank" type="CharacterBody2D" groups=["mobs"]]
+[node name="EnemyTank" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent") groups=["mobs"]]
 motion_mode = 1
-wall_min_slide_angle = 0.523599
+wall_min_slide_angle = 0.0
 script = ExtResource("1_u6snj")
+navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tgo6r")
+shape = SubResource("CircleShape2D_ombhn")
 
 [node name="EnemyTankSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0.337255, 1, 1)
-texture = ExtResource("1_wm33w")
-
-[node name="HPText" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -47.0
-offset_right = 25.0
-offset_bottom = -21.0
-pivot_offset = Vector2(23, 47)
-text = "HP"
+texture = ExtResource("2_leokp")
 
 [node name="TurretSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0.290196, 0.811765, 1)
@@ -60,10 +53,16 @@ script = ExtResource("5_kuu6a")
 [node name="Muzzle" type="Marker2D" parent="TurretSprite"]
 position = Vector2(36.608, 0)
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2DTurret" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0.499996, 2)
+scale = Vector2(11.55, 10.5)
+enable_mode = 1
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_1x3eg")
 lifetime = 0.4
 randomness = 0.03
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

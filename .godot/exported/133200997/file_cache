@@ -1,3 +1,6 @@
-res://Scenes/bullet.tscn::8fd5a840315a21419b21ad1d9b85b1d0::1685476785::res://.godot/exported/133200997/export-ebb3521b4f0ab2fc80eef1183e18e924-bullet.scn
-res://Scenes/main.tscn::dc40fd2c9af5d71f1c29d33e9e1f4c16::1685476784::res://.godot/exported/133200997/export-2ddd04d543d5858e7f20c9299a8b5096-main.scn
-res://Scenes/tank.tscn::9ac84617de0d76d63f411e57ba946cdf::1685476804::res://.godot/exported/133200997/export-e42cbecab2191cdebea93be85e395bba-tank.scn
+res://Scenes/bullet.tscn::dda39c74516ae2eb52bdd36c6f4df1f9::1685657366::res://.godot/exported/133200997/export-ebb3521b4f0ab2fc80eef1183e18e924-bullet.scn
+res://Scenes/main.tscn::da9999c90336332453ab2757298d2322::1685657365::res://.godot/exported/133200997/export-2ddd04d543d5858e7f20c9299a8b5096-main.scn
+res://Scenes/tank.tscn::84bf2fe72cb20d85212412202f3cbb2b::1685657366::res://.godot/exported/133200997/export-e42cbecab2191cdebea93be85e395bba-tank.scn
+res://Scenes/brick.tscn::05fabdd876b98ec78cd157eb7e9d8179::1685657366::res://.godot/exported/133200997/export-6a1da6976d74e666648eb273eadb1e10-brick.scn
+res://Scenes/EnemyBullet.tscn::c1152a14c43eb42cc77ccc4fd86cddb7::1685657366::res://.godot/exported/133200997/export-6959d9f93af84685d022b296461dd9a9-EnemyBullet.scn
+res://Scenes/enemy_tank.tscn::eb8d190cc77be29dafbd6011899fe26b::1685657365::res://.godot/exported/133200997/export-d89d1f8ad3efef280576109b5fad3e6a-enemy_tank.scn

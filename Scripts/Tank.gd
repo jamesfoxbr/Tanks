@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var HP = 100
 
+@onready var particles = $GPUParticles2D
 @onready var Bullet = preload("res://Scenes/bullet.tscn")
 
 var speed = 0
@@ -29,6 +30,10 @@ func _process(delta):
 	tank_die()
 	shooting(delta) 
 	
+	$TankUI/Speed.text = "HP: " + str(HP) + "
+	WASD to move / mouse to aim and shot
+	Esc close the game 
+	F5 restart the game"
 
 func shooting(delta):
 	if Input.is_action_pressed("shoot") and shot_time >= 1:
@@ -65,7 +70,7 @@ func movement(delta):
 	velocity = Vector2.UP.rotated(rotation) * speed 
 	position += velocity * delta
 	
-	debug_panel(direction)
+#	debug_panel(direction)
 
 
 # Make the tank react better when colliding against something.
@@ -82,8 +87,11 @@ func collision():
 
 func tank_die():
 	if HP <= 0:
-		hide()
-		acceleration = 0
+		set_physics_process(false)
+		set_process(false)
+		particles.emitting = true
+		get_node("TurretSprite").set_physics_process(false)
+		get_node("TurretSprite").set_process(false)
 		await get_tree().create_timer(3).timeout
 		get_tree().reload_current_scene()
 
@@ -111,6 +119,9 @@ func handling_stabilization(delta):
 
 func take_damage(d):
 	HP -= d
+	modulate = Color.BLACK
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE
 
 # determines the maximum tank speed limit.
 func speed_limits():
