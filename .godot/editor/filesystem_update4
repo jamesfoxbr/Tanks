@@ -1,8 +1,6 @@
 res://Scenes/main.tscn
+res://Scripts/enemy_tank.gd
 res://Scenes/enemy_tank.tscn
 res://Scenes/tank.tscn
-res://Scenes/bullet.tscn
 res://Scenes/brick.tscn
-res://Scenes/EnemyBullet.tscn
-res://Scripts/enemy_tank.gd
-res://Scripts/EnemyBullet.gd
+res://Scenes/FireExplosion.tscn

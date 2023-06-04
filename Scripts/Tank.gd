@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 var HP = 100
 
-@onready var particles = $GPUParticles2D
+@onready var particles = $TankExplosion
+@onready var turret_sprite = $TurretSprite
+@onready var body_sprite = $BodySprite
 @onready var Bullet = preload("res://Scenes/bullet.tscn")
 
 var speed = 0
@@ -21,6 +23,7 @@ var shot_time: float = 10
 var rate_of_fire: float = 15
 
 func _process(delta):
+	
 	movement(delta)
 	decelerate(delta)
 	collision()
@@ -49,7 +52,6 @@ func shoot(delta):
 	b.transform = $TurretSprite/Muzzle.global_transform
 	b.position += transform.y * delta
 
-
 func movement(delta):
 	var handling: float = 2.5
 	if Input.is_action_pressed("ui_left"):
@@ -69,9 +71,6 @@ func movement(delta):
 	
 	velocity = Vector2.UP.rotated(rotation) * speed 
 	position += velocity * delta
-	
-#	debug_panel(direction)
-
 
 # Make the tank react better when colliding against something.
 func collision():	
@@ -105,7 +104,6 @@ func decelerate(delta):
 		if speed <= 0.9 and speed >= 0:
 			speed = 0
 
-
 # make the tank handling looks more natural e take some time to recover after stop handling
 func handling_stabilization(delta):
 	var handling_stabilize = 2
@@ -119,19 +117,15 @@ func handling_stabilization(delta):
 
 func take_damage(d):
 	HP -= d
-	modulate = Color.BLACK
+	turret_sprite.use_parent_material = true
+	body_sprite.use_parent_material = true
 	await get_tree().create_timer(0.1).timeout
-	modulate = Color.WHITE
+	turret_sprite.use_parent_material = false
+	body_sprite.use_parent_material = false
 
 # determines the maximum tank speed limit.
 func speed_limits():
 	if speed > max_speed:
 		speed = max_speed
 
-
-func debug_panel(handling):
-	$TankUI/Speed.text = "Debug 
-	Speed: " + str(speed) + "
-	Direction: " + str(handling) + "
-	HP: " + str(HP)
 

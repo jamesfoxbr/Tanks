@@ -4,16 +4,20 @@ extends CharacterBody2D
 
 var HP = 100	#total tank hitpoints
 
-@onready var particles = $GPUParticles2D
+@onready var particles = $TankExplosion
 @onready var Bullet = preload("res://Scenes/EnemyBullet.tscn")
+@onready var turret_sprite = $TurretSprite
+@onready var body_sprite = $EnemyTankSprite
 
 # variables of the navigation/pathfinding code
 @export var movement_speed: float = 60.0			# pathfinding speed
 @export var movement_target: Node2D
 @export var navigation_agent: NavigationAgent2D
 
-var shot_time: float = 10				# used to control shot cooldown
-var rate_of_fire: float = 5				# how many shots per second
+var time_between_shots: float = 10
+var rate_of_fire: float = 5
+var shot_cooldown_time: float = 2
+var time_shooting: float = 2
 
 func _ready():	
 	# this is part of the navigation/pathfinding code
@@ -30,12 +34,11 @@ func actor_setup():
 func set_movement_target(target_point: Vector2):	
 	navigation_agent.target_position = target_point
 
-func _physics_process(delta):
+func _process(delta):
 	call_deferred("actor_setup")
 	tank_die()
 	face_to_enemy()
 	tank_shoot(delta, 2)
-	
 	
 	# code below is part of the pathfinding code
 	if navigation_agent.is_navigation_finished():
@@ -51,13 +54,17 @@ func _physics_process(delta):
 	velocity = new_velocity
 	move_and_slide()
 
+var t = 0 # used in the tank_shoot function below
 func tank_shoot(delta, time):
-	# tank shoting on player
-	if shot_time >= 1:
-		shoot(delta)
-		shot_time = 0
-	if shot_time < 1:
-		shot_time += rate_of_fire * delta
+	if t >= shot_cooldown_time:
+		if time_between_shots >= 1:
+			shoot(delta)
+			time_between_shots = 0
+		if time_between_shots < 1:
+			time_between_shots += rate_of_fire * delta
+		await get_tree().create_timer(time_shooting).timeout
+		t = 0
+	t += delta
 
 func face_to_enemy():
 	rotation = atan2(velocity.y, velocity.x)
@@ -81,8 +88,8 @@ func tank_die():
 
 func take_damage(d):
 	HP -= d
-	modulate = Color.BLACK
+	turret_sprite.use_parent_material = true
+	body_sprite.use_parent_material = true
 	await get_tree().create_timer(0.1).timeout
-	modulate = Color.WHITE
-	
-
+	turret_sprite.use_parent_material = false
+	body_sprite.use_parent_material = false
