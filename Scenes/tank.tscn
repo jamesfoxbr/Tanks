@@ -37,6 +37,7 @@ func _physics_process(delta):
 [node name="Tank" type="CharacterBody2D" groups=["player"]]
 material = SubResource("ShaderMaterial_7p2b2")
 scale = Vector2(0.25, 0.25)
+collision_mask = 7
 script = ExtResource("1_bpr08")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

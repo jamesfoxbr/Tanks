@@ -10,7 +10,9 @@ radius = 9.52381
 atlas = ExtResource("2_68kcl")
 region = Rect2(32, 0, 16, 16)
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" type="Area2D" groups=["Bullets"]]
+collision_layer = 8
+collision_mask = 3
 linear_damp = 0.155
 angular_damp = 1.025
 script = ExtResource("1_k1wsx")
