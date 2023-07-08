@@ -77,7 +77,10 @@ func tank_shoot(delta, time):
 	t += delta
 
 func face_to_enemy(delta):
-	rotation = velocity.angle()
+	var face = create_tween()
+	face.tween_property(self, "rotation", velocity.angle(), 1)
+	face.tween_property(self, "follow", Vector2.UP * 200, 100)
+
 
 func shoot(delta):	
 	var b = Bullet.instantiate()
