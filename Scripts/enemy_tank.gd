@@ -8,6 +8,7 @@ var HP = 100	#total tank hitpoints
 @onready var Bullet = preload("res://Scenes/EnemyBullet.tscn")
 @onready var turret_sprite = $TurretSprite
 @onready var body_sprite = $EnemyTankSprite
+@onready var shot = $ShotAudio
 
 # variables of the navigation/pathfinding code
 @export var movement_speed: float = 60.0			# pathfinding speed
@@ -88,6 +89,7 @@ func shoot(delta):
 
 	b.transform = $TurretSprite/Muzzle.global_transform
 	b.position += transform.y * delta
+	shot.play()
 
 func tank_die():
 	if HP <= 0:

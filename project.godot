@@ -22,7 +22,9 @@ window/stretch/aspect="expand"
 
 [editor]
 
-movie_writer/movie_file="D:/Users/Onedrive/Documentos/Game Dev/Godot/Tank.avi"
+movie_writer/movie_file="D:/Users/Onedrive/Documentos/Game Dev/Godot/movie.avi"
+movie_writer/disable_vsync=true
+movie_writer/fps=30
 
 [input]
 

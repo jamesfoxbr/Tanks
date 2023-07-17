@@ -4,3 +4,9 @@ res://Scenes/tank.tscn
 res://Scenes/brick.tscn
 res://Scenes/FireExplosion.tscn
 res://Scenes/bullet.tscn
+res://Scripts/main.gd
+res://Scripts/brick.gd
+res://Scripts/TileMapBlocks.gd
+res://Scripts/bullet.gd
+res://Scripts/Tank.gd
+res://Scripts/enemy_tank.gd

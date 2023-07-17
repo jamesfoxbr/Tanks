@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8q3jcvspv67a"]
+[gd_scene load_steps=11 format=3 uid="uid://c8q3jcvspv67a"]
 
 [ext_resource type="Shader" path="res://Shader/tank.gdshader" id="1_e5thr"]
 [ext_resource type="Script" path="res://Scripts/enemy_tank.gd" id="1_u6snj"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bwj0c7ukey10x" path="res://Sprites/Turret.png" id="4_7mweb"]
 [ext_resource type="Script" path="res://Scripts/EnemyTurret.gd" id="5_kuu6a"]
 [ext_resource type="PackedScene" uid="uid://bxljjmdn0s6sk" path="res://Scenes/FireExplosion.tscn" id="5_s74kl"]
+[ext_resource type="AudioStream" uid="uid://cf03rswggrxaa" path="res://Sounds/Shot.wav" id="7_4qfkn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdfos"]
 shader = ExtResource("1_e5thr")
@@ -55,5 +56,8 @@ visible = false
 [node name="DetectionCollissionShape" type="CollisionShape2D" parent="DetectionArea"]
 position = Vector2(111, 0)
 shape = SubResource("CircleShape2D_awaqs")
+
+[node name="ShotAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_4qfkn")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

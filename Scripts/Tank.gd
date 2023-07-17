@@ -6,6 +6,7 @@ var HP = 100
 @onready var turret_sprite = $TurretSprite
 @onready var body_sprite = $BodySprite
 @onready var Bullet = preload("res://Scenes/bullet.tscn")
+@onready var shot = $ShotAudio
 
 var speed = 0
 @export var max_speed = 40
@@ -51,6 +52,7 @@ func shoot(delta):
 	
 	b.transform = $TurretSprite/Muzzle.global_transform
 	b.position += transform.y * delta
+	shot.play()
 
 func movement(delta):
 	var handling: float = 2.5

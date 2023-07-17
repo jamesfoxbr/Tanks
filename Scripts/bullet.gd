@@ -33,8 +33,3 @@ func _on_body_entered(body):
 		body.take_damage(bullet_damage)
 		create_sparks()
 		queue_free()
-		
-#	if body.is_in_group("blocks"):
-#		var bullet_pos = position
-#		body.destroy_block(bullet_pos)		
-#		queue_free()
