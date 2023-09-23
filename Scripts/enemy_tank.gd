@@ -4,11 +4,11 @@ extends CharacterBody2D
 
 var HP = 100	#total tank hitpoints
 
-@onready var particles = $TankExplosion
-@onready var Bullet = preload("res://Scenes/EnemyBullet.tscn")
-@onready var turret_sprite = $TurretSprite
-@onready var body_sprite = $EnemyTankSprite
-@onready var shot = $ShotAudio
+@onready var particles 		= $TankExplosion
+@onready var Bullet 		= preload("res://Scenes/EnemyBullet.tscn")
+@onready var turret_sprite 	= $TurretSprite
+@onready var body_sprite 	= $EnemyTankSprite
+@onready var shot 			= $ShotAudio
 
 # variables of the navigation/pathfinding code
 @export var movement_speed: float = 60.0			# pathfinding speed
@@ -17,9 +17,9 @@ var HP = 100	#total tank hitpoints
 
 # variabes for shooting
 var time_between_shots: float = 10
-var rate_of_fire: float = 5
+var rate_of_fire: 		float = 5
 var shot_cooldown_time: float = 2
-var time_shooting: float = 2
+var time_shooting: 		float = 2
 
 func _ready():	
 	enemy_active(false)
@@ -98,8 +98,8 @@ func tank_die():
 		await get_tree().create_timer(3).timeout
 		queue_free()
 
-func take_damage(d):
-	HP -= d
+func take_damage(damage):
+	HP -= damage
 	turret_sprite.use_parent_material = true
 	body_sprite.use_parent_material = true
 	await get_tree().create_timer(0.1).timeout
